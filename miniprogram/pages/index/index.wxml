@@ -1,0 +1,38 @@
+<!--pages/index/index.wxml-->
+
+<!-- 如果用户没有添加倒数日项，那么显示 -->
+<view class="index-tips" wx:if="{{!itemList.length}}">
+  <dashed-tips innerText="你还没有添加任何的代办噢，点击底下“＋”按钮添加您的倒数日吧" color="#999999" borderColor="#cccccc">
+    <!-- 插入一个名字叫做before的slot节点，该节点有自己的样式 -->
+    <open-data slot="before" class="notice" type="userNickName"></open-data>
+  </dashed-tips>
+  
+</view>
+
+<!-- 如果用户已经有添加过倒数日项，则显示倒数日项 -->
+<view class="item-list" wx:if="{{itemList.length}}">
+  <block wx:for="{{itemList}}" wx:key="{{index}}">
+    <view class="item {{item.isPast ? 'item-past' : ''}} {{ itemLongPress == index ? 'long-press' : '' }}"
+     bindtap="handleClick" 
+     bindtouchstart="handleTouchStart"
+     bindtouchend="handleTouchEnd"
+     bind:longpress="handleLongPress" data-index="{{index}}" wx-if="{{!item.isPast}}" >
+      <view class="top-color" style="background-color:{{item.itemColor}};">
+        还有<text>{{item.dateNum}}</text>天
+      </view>
+      <view class="title">{{item.itemTitle}}</view>
+      <view class="remarks">
+        {{item.chooseDate}}
+      </view>
+      <view class="long-press-view">
+        <view class="edit" catch:tap="itemEdit" data-_id="{{item._id}}">编辑</view>
+        <view class="cancel" catch:tap="itemCancel">取消</view>
+      </view>
+    </view>
+  </block>
+</view>
+
+<!-- 新增倒数日的按钮 -->
+<view class='index-buttonwrap'>
+  <my-button class="my-class" btWidth="80rpx" btHeight="80rpx" bgColor="rgba(13,145,20,0.8)" color="#fff" innerText="+" fontSize="50rpx" bindtap="toAddItem" borderRadius="50%"></my-button>
+</view>

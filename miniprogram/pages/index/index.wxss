@@ -1,0 +1,107 @@
+/* pages/index/index.wxss */
+page{
+  background-color: #eee;
+}
+
+/* 无记录 提醒 */
+.index-tips{
+  width: 80%;
+  margin: 180rpx auto 0 auto;
+  background-color: #fff;
+}
+.index-tips .notice{
+  color: #999999;
+}
+
+/* 添加按钮 */
+.index-buttonwrap{
+  position: fixed;
+  right: 5%;
+  bottom: 200rpx;
+  display: inline-block;
+}
+
+/* 项目列表 */
+.item-list{
+  padding: 30rpx 10rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+.item-list .item{
+  color: #000;
+  width: 320rpx;
+  margin: 25rpx;
+  padding: 0rpx 0 50rpx 0;
+  border-radius: 0rpx;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  position: relative;
+}
+.item-list .item-past{
+  opacity: 1;
+}
+.item-list .top-color{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #ffffff;
+  font-size: 30rpx;
+  border-radius: 6rpx 6rpx 0 0;
+}
+.item-list .top-color text{
+  font-size: 48rpx;
+  display: inline-block;
+  padding: 0 20rpx;
+}
+.item-list .item .title{
+  font-size: 30rpx;
+  line-height: 42rpx;
+  height: 42rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 30rpx;
+  margin: 50rpx auto 30rpx auto;
+  text-align: center;
+  font-weight: bold;
+}
+.item-list .item .remarks{
+  font-size: 28rpx;
+  font-weight: normal;
+  line-height: 40rpx;
+  padding: 0 30rpx;
+  text-align: center;
+  color: #aaaaaa;
+}
+.item-list .item .long-press-view{
+  width: 206rpx;
+  height: 42rpx;
+  position: absolute;
+  left: 0rpx;
+  top: -30rpx;
+  justify-content: space-between;
+  display: none;
+}
+.item-list .long-press .long-press-view{
+  display: flex;
+}
+.item-list .item .long-press-view view{
+  width: 102rpx;
+  text-align: center;
+  height: 42rpx;
+  line-height: 42rpx;
+  font-size: 24rpx;
+  color: #333333;
+  border-radius: 0;
+  background-color: rgba(255, 255, 255, 0.85);
+}
+.item-list .item .long-press-view .edit{
+  border-radius: 6rpx 0 0 6rpx;
+}
+.item-list .item .long-press-view .cancel{
+  border-radius: 0rpx 6rpx 6rpx 0rpx;
+}

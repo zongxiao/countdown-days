@@ -1,0 +1,6 @@
+.my-button{
+  display: block;
+  text-align: center;
+  border-radius: 5rpx;
+  position: relative;
+}

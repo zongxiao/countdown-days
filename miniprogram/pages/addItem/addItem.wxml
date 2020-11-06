@@ -1,0 +1,27 @@
+<!--pages/addItem/addItem.wxml-->
+
+<!-- 事件名称输入 -->
+<view class="title-wrap">
+  <input class="title-value" focus="{{itemFocus}}" type="text" value="{{itemTitle}}" placeholder="点击这里输入事件名称" confirm-type="done" bindinput="itemTitleInput"></input>
+</view>
+
+<!-- 日期选择 -->
+<picker class="date-wrap" mode="date" value="{{chooseDate}}" start="{{todayDate}}" bindchange="bindTimeChange">
+  <view class="date-key"><image src="../../images/icon/date.png"></image>目标日</view><view class="date-value">{{chooseDate}}</view>
+</picker>
+
+<!-- 备注信息 -->
+<view class="remark-wrap">
+  <view class="remark-key"><image src="../../images/icon/remark.png"></image>备注</view>
+  <input class="remark-value" type="text" value="{{remarksInfo}}" placeholder="可选" confirm-type="done" bindinput="itemRemarksInput"></input>
+</view>
+
+<!-- 色块选择 -->
+<view class="item-color-list">
+  <view class="item-color {{ itemSelect == index ? 'cur' : '' }}" wx:for="{{colorList}}" wx:key="{{index}}" style="background: {{item}};" data-colorid="{{index}}" bindtap="chooseColor"></view>
+</view>
+
+<!-- 保存按钮，点击之后将该页面的数据传到云数据库 -->
+<view class="save-wrap">
+  <my-button innerText="保存" bindtap="saveItem" bgColor="#3682f3"></my-button>
+</view>

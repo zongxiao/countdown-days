@@ -1,0 +1,7 @@
+.border-dashed{
+  padding: 50rpx;
+  border: 4rpx dashed #999999;
+  color: #999999;
+  font-size: 30rpx;
+  text-align: justify;
+}

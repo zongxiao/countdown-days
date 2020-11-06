@@ -1,0 +1,3 @@
+<!-- 这是自定义组件的内部WXML结构 -->
+<view class="my-button" style="width: {{btWidth}}; line-height: {{btHeight}}; color: {{color}}; background-color: {{bgColor}}; font-size: {{fontSize}}; border-radius: {{borderRadius}}">{{innerText}}</view>
+<slot></slot>

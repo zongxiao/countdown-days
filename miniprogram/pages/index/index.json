@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "dashed-tips": "../../mylibrary/dashed/dashed",
+    "my-button": "../../mylibrary/button/button"
+  }
+}

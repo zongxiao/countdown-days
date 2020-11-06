@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "my-button": "../../mylibrary/button/button"
+  },
+  "navigationBarTitleText": "编辑倒数日"
+}

@@ -1,0 +1,112 @@
+/* pages/addItem/addItem.wxss */
+page{
+  background-color: #fcfcfc;
+}
+
+/* 项目标题 */
+.title-wrap{
+  height: 90rpx;
+  background-color: #ffffff;
+  margin: 45rpx auto;
+  display: flex;
+  align-items: center;
+  padding: 0 40rpx;
+}
+.title-wrap .title-value{
+  font-size: 28rpx;
+  width: 100%;
+  display: block;
+}
+
+/* 目标日期 */
+.date-wrap{
+  height: 90rpx;
+  padding: 0 30rpx;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+}
+.date-wrap .date-key{
+  display: inline-block;
+  width: 200rpx;
+  padding-left: 60rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+.date-wrap .date-key image{
+  width: 40rpx;
+  height: 40rpx;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -20rpx;
+}
+.date-wrap .date-value{
+  display: inline-block;
+  flex: 1;
+}
+
+/* 备注信息 */
+.remark-wrap{
+  height: 90rpx;
+  padding: 0 30rpx;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  margin: 45rpx auto;
+}
+.remark-wrap .remark-key{
+  width: 200rpx;
+  padding-left: 60rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+.remark-wrap .remark-key image{
+  width: 40rpx;
+  height: 40rpx;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -20rpx;
+  background-size: 100% 100%;
+}
+.remark-wrap .remark-value{
+  display: inline-block;
+  flex: 1;
+}
+
+/* 色块选择列表 */
+.item-color-list{
+  padding: 0 30rpx;
+  height: 90rpx;
+  background-color: #fff;
+  margin: 45rpx auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.item-color-list .item-color{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  box-sizing: border-box;
+  opacity: 0.5;
+}
+.item-color-list .cur{
+  opacity: 1;
+}
+
+/* 保存按钮 */
+.save-wrap{
+  padding: 0 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.save-wrap .save{
+  margin-left: 30rpx;
+}
