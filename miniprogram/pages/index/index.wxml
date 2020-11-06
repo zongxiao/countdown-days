@@ -25,7 +25,7 @@
         {{item.chooseDate}}
       </view>
       <view class="long-press-view">
-        <view class="edit" catch:tap="itemEdit" data-_id="{{item._id}}">编辑</view>
+        <view class="edit" catch:tap="itemEdit" data-_id="{{item._id}}">修改</view>
         <view class="cancel" catch:tap="itemCancel">取消</view>
       </view>
     </view>
