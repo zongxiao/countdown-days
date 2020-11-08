@@ -1,11 +1,11 @@
 /* pages/index/index.wxss */
 page{
-  background-color: #eee;
+  background-color: #f6f6f6;
 }
 
 /* 无记录 提醒 */
 .index-tips{
-  width: 80%;
+  width: 90%;
   margin: 180rpx auto 0 auto;
   background-color: #fff;
 }
@@ -19,6 +19,8 @@ page{
   right: 5%;
   bottom: 200rpx;
   display: inline-block;
+  box-shadow: 0 0 20rpx rgba(0 ,0 ,0 , 0.3);
+  border-radius: 50%;
 }
 
 /* 项目列表 */
@@ -39,6 +41,7 @@ page{
   box-sizing: border-box;
   background-color: #ffffff;
   position: relative;
+  box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.05);
 }
 .item-list .item-past{
   opacity: 1;
@@ -95,13 +98,14 @@ page{
   height: 42rpx;
   line-height: 42rpx;
   font-size: 24rpx;
-  color: #333333;
+  color: #666666;
   border-radius: 0;
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.2);
 }
 .item-list .item .long-press-view .edit{
-  border-radius: 6rpx 0 0 6rpx;
+  border-radius: 6rpx 0 0 0rpx;
 }
 .item-list .item .long-press-view .cancel{
-  border-radius: 0rpx 6rpx 6rpx 0rpx;
+  border-radius: 0rpx 6rpx 0rpx 0rpx;
 }

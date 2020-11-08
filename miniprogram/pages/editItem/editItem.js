@@ -72,7 +72,6 @@ Page({
 
   // 选择颜色色块
   chooseColor: function (e) {
-    console.log(e.target.dataset.colorid)
     this.setData({
       itemColor: this.data.colorList[e.target.dataset.colorid],
       itemSelect: e.target.dataset.colorid
@@ -83,7 +82,7 @@ Page({
   saveItem: function (event) {
     if (this.data.itemTitle == '') {
       wx.showToast({
-        title: '不完整',
+        title: '事件名称忘了写',
         icon: 'none',
         duration: 2000
       })
@@ -106,7 +105,6 @@ Page({
       }
     })
       .then(res => {
-        console.log(res);
         wx.hideLoading();
         wx.showLoading({
           title: '跳转中',
@@ -127,8 +125,8 @@ Page({
     wx.showModal({
       title: '提示',
       content: '确定彻底删除么，一旦删除无法恢复',
-      
       success(res) {
+        console.log(res)
         if (res.confirm) {
           db.collection('todo-list').doc(that.data.itemId).remove()
             .then(res2 => {
@@ -138,13 +136,10 @@ Page({
               wx.redirectTo({
                 url: '../index/index',
               })
-              console.log(res2)
             })
             .catch(err => {
               console.log(err)
             })
-        } else if (res.cancel) {
-          console.log('用户点击取消')
         }
       }
     })

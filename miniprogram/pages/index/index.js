@@ -19,15 +19,31 @@ Page({
       url: '../addItem/addItem',
     })
   },
-
-  // 跳转到编辑页面，需要传入_id
-  itemEdit: function (e) {
-    console.log(e.target.dataset._id)
-    this.setData({
-      itemLongPress: null
-    })
-    wx.navigateTo({
-      url: `../editItem/editItem?_id=${e.target.dataset._id}`,
+  // 删除倒数日
+  deleteItem: function (e) {
+    let that = this
+    wx.showModal({
+      title: '提示',
+      content: '确定彻底删除么，一旦删除无法恢复',
+      success(res) {
+        that.setData({
+          itemLongPress: null
+        })
+        if (res.confirm) {
+          db.collection('todo-list').doc(e.target.dataset._id).remove()
+            .then(res2 => {
+              wx.showToast({
+                title: '删除成功',
+              })
+              wx.redirectTo({
+                url: '../index/index',
+              })
+            })
+            .catch(err => {
+              console.log(err)
+            })
+        }
+      }
     })
   },
 
@@ -39,7 +55,15 @@ Page({
   },
 
   // bindtouchstart,bindtouchend,bindtap,bindlongpress事件测试
-  handleClick: function (e) {
+  // 跳转到编辑页面，需要传入_id
+  itemEdit: function (e) {
+    console.log(e)
+    this.setData({
+      itemLongPress: null
+    })
+    wx.navigateTo({
+      url: `../editItem/editItem?_id=${e.target.dataset._id}`,
+    })
   },
   handleTouchStart: function (e) {
   },
@@ -48,19 +72,33 @@ Page({
   handleLongPress: function (e) {
     let that = this;
     this.data.itemTimer = setTimeout(function () {
-      console.log()
       that.setData({
         itemLongPress: e.currentTarget.dataset.index
       })
     }, 300)
   },
-
+  // 函数调用后返回： 当前日期【格式为20190614】
+  getNowFormatDate: function (mydate) {
+    var date = mydate || new Date();
+    var seperator1 = "";
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month >= 1 && month <= 9) {
+      month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+      strDate = "0" + strDate;
+    }
+    var currentdate = year + seperator1 + month + seperator1 + strDate;
+    return currentdate;
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     wx.showLoading({
-      title: '数据获取中',
+      title: '更新中',
     })
     wx.cloud.callFunction({
       name: 'login'
@@ -72,16 +110,14 @@ Page({
         let dateNumArr = [];
         let ifPast = [];
         for (let i = 0; i < rawData.length; i++) {
-          let dateToday = new Date();
-          let dateAim = new Date(rawData[i].chooseDate)
-          let dateNum = (dateAim.getTime() - dateToday.getTime()) / (24 * 60 * 60 * 1000)
-          if (dateNum > 0) {
+          let dateToday = this.getNowFormatDate();
+          let dateAim = this.getNowFormatDate(new Date(rawData[i].chooseDate))
+          let dateNum = dateAim - dateToday;
+          if (dateNum >= 0) {
             // 如果 目标日减去今日 得出的结果大于0  证明目标日还没过去
             ifPast.push(false)
-            dateNum = Math.ceil(dateNum)
           } else {
-            ifPast.push(true)
-            dateNum = Math.floor(Math.abs(dateNum))
+            ifPast.push(false)
           }
           dateNumArr.push(dateNum)
           rawData[i].dateNum = dateNumArr[i]
@@ -91,77 +127,10 @@ Page({
         rawData.sort(function (a, b) {
           return a.dateNum - b.dateNum
         })
-        // 先声明 原始数组中dateNum的重复次数
-        let repeatNum = 0;
-        // 定义一个未知长度的数组，后续会根据repeatNum 定义二维数组
-        let finallyArr = new Array();
-        let finallyArrLen = 0
-        let copyRawData = new Array();
-        for (let i = 0; i < rawData.length; i++) {
-          copyRawData[i] = rawData[i]
-        }
-
-        // 数组去重
-        // function unique(arr1) {
-        //   const res = new Map();
-        //   return arr1.filter(function (currentValue, index, arr) {
-        //     return !res.has(currentValue.dateNum) && res.set(currentValue.dateNum)
-        //   })
-        // }
-        // console.log(unique(copyRawData))
-        console.log(copyRawData)
-
-        const arrMap = {}
-        for (let i = 0; i < copyRawData.length; i++) {
-          const c = copyRawData[i].chooseDate
-          const t = copyRawData[i].itemTitle
-          if (arrMap[c]) {
-            arrMap[c].push(t)
-          } else {
-            arrMap[c] = [t]
-          }
-          console.log("==============================="+i)
-        }
-
-        const newArr = []
-
-        for (let k in arrMap) {
-          newArr.push({
-            itemTitle: arrMap[k].join(','),
-            dateNum: k
-          })
-        }
-
-        console.log(arrMap)
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        finallyArrLen = rawData.length - repeatNum;
-        for (let i = 0; i < finallyArrLen; i++) {
-          finallyArr[i] = new Array;
-        }
-        for (let i = 0; i < rawData.length - 1; i++) {
-          // 求出重复项的个数
-          if (rawData[i].dateNum == rawData[i + 1].dateNum) {
-            finallyArr[i] = rawData[i]
-          }
-        }
         this.setData({
           itemList: rawData
         })
-        wx.hideLoading(); 
+        wx.hideLoading();
       }).catch(err => {
         console.log(err)
         wx.hideLoading();

@@ -1,6 +1,6 @@
 /* pages/addItem/addItem.wxss */
 page{
-  background-color: #fcfcfc;
+  background-color: #f6f6f6;
 }
 
 /* 项目标题 */
@@ -33,6 +33,7 @@ page{
   padding-left: 60rpx;
   box-sizing: border-box;
   position: relative;
+  color: #333333;
 }
 .date-wrap .date-key image{
   width: 40rpx;
@@ -63,6 +64,7 @@ page{
   padding-left: 60rpx;
   box-sizing: border-box;
   position: relative;
+  color: #333333;
 }
 .remark-wrap .remark-key image{
   width: 40rpx;
@@ -94,7 +96,7 @@ page{
   height: 60rpx;
   border-radius: 50%;
   box-sizing: border-box;
-  opacity: 0.5;
+  opacity: 0.2;
 }
 .item-color-list .cur{
   opacity: 1;

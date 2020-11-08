@@ -70,7 +70,6 @@ Page({
 
   // 选择颜色色块
   chooseColor: function (e) {
-    console.log(e.target.dataset.colorid)
     this.setData({
       itemColor: this.data.colorList[e.target.dataset.colorid],
       itemSelect: e.target.dataset.colorid
@@ -81,7 +80,7 @@ Page({
   saveItem: function (event) {
     if (this.data.itemTitle == '') {
       wx.showToast({
-        title: '不完整',
+        title: '事件忘了填写',
         icon: 'none',
         duration: 2000
       })
@@ -90,8 +89,6 @@ Page({
       })
       return false;
     }
-    console.log(event);
-    console.log(this.data.itemTitle)
     wx.showLoading({
       title: '保存中',
     })
@@ -107,7 +104,6 @@ Page({
         itemColor: this.data.itemColor
       }
     }).then(res => {
-      console.log(res);
       wx.hideLoading();
       wx.showLoading({
         title: '跳转中',
@@ -129,7 +125,6 @@ Page({
     this.setData({
       todayDate: this.getNowFormatDate(),
       chooseDate: this.getNowFormatDate(),
-
     })
     
   },
