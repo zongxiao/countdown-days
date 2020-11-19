@@ -150,7 +150,7 @@ Page({
    */
   onLoad: function (options) {
     console.log(options._id)
-    db.collection('todo-list').doc(options._id).get().then(res => {
+    db.collection('countdownDay_list').doc(options._id).get().then(res => {
       console.log(res.data)
       this.setData({
         itemTitle: res.data.itemTitle,

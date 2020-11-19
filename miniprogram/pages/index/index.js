@@ -106,18 +106,17 @@ Page({
       db.collection('countdownDay_list').where({
         _openid: res.result.openid // 填入当前用户 openid
       }).get().then(res => {
+        console.log(res.data)
         let rawData = res.data;
         let dateNumArr = [];
         let ifPast = [];
         for (let i = 0; i < rawData.length; i++) {
-          let dateToday = this.getNowFormatDate();
-          let dateAim = this.getNowFormatDate(new Date(rawData[i].chooseDate))
-          let dateNum = dateAim - dateToday;
+          let dateNum = Math.ceil(new Date(new Date(rawData[i].chooseDate) - new Date()) / (1*24*60*60*1000));
           if (dateNum >= 0) {
             // 如果 目标日减去今日 得出的结果大于0  证明目标日还没过去
             ifPast.push(false)
           } else {
-            ifPast.push(false)
+            ifPast.push(true)
           }
           dateNumArr.push(dateNum)
           rawData[i].dateNum = dateNumArr[i]
