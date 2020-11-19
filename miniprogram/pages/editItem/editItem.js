@@ -94,7 +94,7 @@ Page({
     wx.showLoading({
       title: '保存中',
     })
-    db.collection('todo-list').doc(this.data.itemId).update({
+    db.collection('countdownDay_list').doc(this.data.itemId).update({
       // data 传入需要局部更新的数据
       data: {
         // 表示将 done 字段置为 true
@@ -128,7 +128,7 @@ Page({
       success(res) {
         console.log(res)
         if (res.confirm) {
-          db.collection('todo-list').doc(that.data.itemId).remove()
+          db.collection('countdownDay_list').doc(that.data.itemId).remove()
             .then(res2 => {
               wx.showToast({
                 title: '删除成功，跳转中',

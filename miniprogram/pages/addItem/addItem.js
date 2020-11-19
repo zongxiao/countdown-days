@@ -92,7 +92,7 @@ Page({
     wx.showLoading({
       title: '保存中',
     })
-    db.collection('todo-list').add({
+    db.collection('countdownDay_list').add({
       data: {
         // 用户输入事件的名称
         itemTitle: this.data.itemTitle,

@@ -30,7 +30,7 @@ Page({
           itemLongPress: null
         })
         if (res.confirm) {
-          db.collection('todo-list').doc(e.target.dataset._id).remove()
+          db.collection('countdownDay_list').doc(e.target.dataset._id).remove()
             .then(res2 => {
               wx.showToast({
                 title: '删除成功',
@@ -103,7 +103,7 @@ Page({
     wx.cloud.callFunction({
       name: 'login'
     }).then(res => {
-      db.collection('todo-list').where({
+      db.collection('countdownDay_list').where({
         _openid: res.result.openid // 填入当前用户 openid
       }).get().then(res => {
         let rawData = res.data;
