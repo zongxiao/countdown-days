@@ -1,4 +1,4 @@
-// pages/index/index.js
+// pages/expired/expired.js
 const db = wx.cloud.database();
 Page({
 
@@ -17,11 +17,6 @@ Page({
   toAddItem: function () {
     wx.navigateTo({
       url: '../addItem/addItem',
-    })
-  },
-  toExpired: function () {
-    wx.navigateTo({
-      url: '../expired/expired',
     })
   },
   // 删除倒数日

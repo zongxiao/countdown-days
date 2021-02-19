@@ -3,4 +3,5 @@
   text-align: center;
   border-radius: 5rpx;
   position: relative;
+  margin: 10rpx 0;
 }

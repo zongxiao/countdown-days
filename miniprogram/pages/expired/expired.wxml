@@ -1,0 +1,23 @@
+<!--pages/expired/expired.wxml-->
+
+<!-- 如果用户已经有添加过倒数日项，则显示倒数日项 -->
+<view class="item-list" wx:if="{{itemList.length}}">
+  <block wx:for="{{itemList}}" wx:key="index">
+    <view class="item {{item.isPast ? 'item-past' : ''}} {{ itemLongPress == index ? 'long-press' : '' }}"
+     data-_id="{{item._id}}"
+     bind:tap="itemEdit"
+     bind:longpress="handleLongPress" data-index="{{index}}" wx-if="{{item.isPast}}" >
+      <view data-_id="{{item._id}}" class="top-color" style="background-color:{{item.itemColor}};">
+        还有<text>{{item.dateNum}}</text>天
+      </view>
+      <view data-_id="{{item._id}}" class="title">{{item.itemTitle}}</view>
+      <view data-_id="{{item._id}}" class="remarks">
+        {{item.chooseDate}}
+      </view>
+      <view class="long-press-view">
+        <view class="edit" catch:tap="deleteItem" data-_id="{{item._id}}" >删除</view>
+        <view class="cancel" catch:tap="itemCancel">取消</view>
+      </view>
+    </view>
+  </block>
+</view>

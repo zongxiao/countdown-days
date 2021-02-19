@@ -2,5 +2,6 @@
   "usingComponents": {
     "dashed-tips": "../../mylibrary/dashed/dashed",
     "my-button": "../../mylibrary/button/button"
-  }
+  },
+  "navigationBarTitleText": "进行中事项"
 }

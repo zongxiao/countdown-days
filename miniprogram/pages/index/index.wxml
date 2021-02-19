@@ -32,5 +32,6 @@
 
 <!-- 新增倒数日的按钮 -->
 <view class='index-buttonwrap'>
-  <my-button class="my-class" btWidth="100rpx" btHeight="100rpx" bgColor="rgba(13,145,20,0.48)" color="#fff" innerText="+" fontSize="50rpx" bindtap="toAddItem" borderRadius="50%"></my-button>
+  <my-button class="my-class" btWidth="75rpx" btHeight="75rpx" bgColor="rgba(0,0,0,0.7)" color="#fff" innerText="新增" fontSize="24rpx" bindtap="toAddItem" borderRadius="50%"></my-button>
+  <my-button class="my-class" btWidth="75rpx" btHeight="75rpx" bgColor="rgba(0,0,0,0.3)" color="#fff" innerText="过期" fontSize="24rpx" bindtap="toExpired" borderRadius="50%"></my-button>
 </view>

@@ -43,16 +43,13 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
-      "list": []
-    },
     "plugin": {
       "list": []
     },
     "game": {
+      "list": []
+    },
+    "gamePlugin": {
       "list": []
     },
     "miniprogram": {
@@ -67,6 +64,12 @@
           "id": -1,
           "name": "addItem",
           "pathName": "pages/addItem/addItem",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "expired",
+          "pathName": "pages/expired/expired",
           "scene": null
         }
       ]
